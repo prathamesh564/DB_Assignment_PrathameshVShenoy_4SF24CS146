@@ -1,4 +1,4 @@
-
+//  E commerce
 CREATE TABLE Categories (
     category_id INTEGER PRIMARY KEY AUTOINCREMENT, 
     category_name VARCHAR(100) NOT NULL,
@@ -56,47 +56,25 @@ INSERT INTO Categories (category_name, description) VALUES
 ('Home Appliances', 'Kitchen and living room utility'),
 ('Clothing', 'Apparel for men, women, and kids'),
 ('Books', 'Academic and fictional literature'),
-('Fitness', 'Gym equipment and accessories'),
-('Beauty', 'Skincare and personal care products'),
-('Toys', 'Educational games and fun items'),
-('Furniture', 'Office and home décor'),
-('Automotive', 'Car parts and accessories'),
-('Stationery', 'Office and school supplies');
-
+('Fitness', 'Gym equipment and accessories');
 
 INSERT INTO Users (full_name, email, address) VALUES 
-('Prathamesh Shenoy', 'prathamesh@example.com', '123 Mangaluru St'),
-('Nihal A', 'nihal@example.com', '456 Bengaluru Rd'),
-('Preetham S', 'preetham@example.com', '789 Udupi Ln'),
-('Vikas K', 'vikas@example.com', '101 Mysore Blvd'),
-('Chiranth R', 'chiranth@example.com', '202 Hubli Ave'),
-('Aditi Rao', 'aditi@example.com', '303 Panaji Rd'),
-('Rahul Nair', 'rahul@example.com', '404 Kochi St'),
-('Sneha Patil', 'sneha@example.com', '505 Pune Hwy'),
-('Amit Verma', 'amit@example.com', '606 Delhi Dr'),
-('Priya Das', 'priya@example.com', '707 Kolkata Sq');
-
+('Prathamesh V Shenoy', 'prathamesh@gmail.com', 'Adyar, Mangaluru'),
+('Nihal A', 'nihal@gmail.com', 'MG Road, Bengaluru'),
+('Preetham S', 'preetham@gmail.com', 'Malpe, Udupi'),
+('Vikas K', 'vikas@gmail.com', 'Palace Road, Mysore '),
+('Chiranth R', 'chiranth@gmail.com', 'Gandhi, Hubli');
 
 INSERT INTO User_Phones (user_id, phone_number) VALUES 
 (1, '9876543210'), (1, '9123456789'), 
-(2, '8887776665'), (3, '7776665554'), 
-(4, '6665554443'), (5, '5554443332'), 
-(6, '4443332221'), (7, '3332221110'), 
-(8, '2221110009'), (9, '1110009998');
-
+(2, '8887776665'), (3, '7776665554');
 
 INSERT INTO Products (category_id, name, price, stock_quantity) VALUES 
 (1, 'Smartphone X1', 49999.00, 50),
-(1, 'Bluetooth Headphones', 2500.00, 100),
-(2, 'Microwave Oven', 8500.00, 20),
-(3, 'Cotton T-Shirt', 799.00, 200),
-(4, 'Database Systems Book', 1200.00, 30),
-(5, 'Yoga Mat', 1500.00, 45),
-(6, 'Face Moisturizer', 450.00, 80),
-(7, 'Lego Set', 3500.00, 25),
-(8, 'Ergonomic Chair', 12000.00, 15),
-(9, 'Car Vacuum Cleaner', 2200.00, 40);
-
+(2, 'Bluetooth Headphones', 2500.00, 100),
+(3, 'Microwave Oven', 8500.00, 20),
+(4, 'Cotton T-Shirt', 799.00, 200),
+(5, 'Database Systems Book', 1200.00, 30);
 
 INSERT INTO Orders (user_id, total_amount, status) VALUES 
 (1, 52499.00, 'Delivered'),
@@ -104,24 +82,13 @@ INSERT INTO Orders (user_id, total_amount, status) VALUES
 (3, 8500.00, 'Pending'),
 (4, 799.00, 'Cancelled'),
 (5, 1200.00, 'Delivered'),
-(6, 450.00, 'Delivered'),
-(7, 3500.00, 'Shipped'),
-(8, 12000.00, 'Pending'),
-(9, 2200.00, 'Delivered'),
-(10, 1500.00, 'Delivered');
-
 
 INSERT INTO Order_Items (order_id, product_id, quantity, unit_price) VALUES 
-(1, 1, 1, 49999.00), (1, 2, 1, 2500.00),
+(1, 1, 1, 49999.00), 
 (2, 2, 1, 2500.00),
 (3, 3, 1, 8500.00),
 (4, 4, 1, 799.00),
-(5, 5, 1, 1200.00),
-(6, 7, 1, 450.00),
-(7, 8, 1, 3500.00),
-(8, 9, 1, 12000.00),
-(9, 10, 1, 2200.00);
-
+(5, 5, 1, 1200.00);
 
 SELECT u.full_name, p.name AS product_purchased, o.status
 FROM Users u
@@ -136,7 +103,7 @@ LEFT JOIN Products p ON c.category_id = p.category_id
 GROUP BY c.category_name;
 
 
-
+//College Campus Hostel Booking
 CREATE TABLE Blocks (
     block_id INTEGER PRIMARY KEY AUTOINCREMENT,
     block_name VARCHAR(50) NOT NULL,
@@ -194,23 +161,18 @@ CREATE TABLE Room_Amenities (
 );
 
 INSERT INTO Blocks (block_name, warden_name) VALUES 
-('Aryabhatta Hall', 'Dr. Satish Kumar'), ('Bhaskara Annex', 'Prof. Meena R');
+('Hemanth Block - A', 'Dr. Hemanth Prabhu'), ('Namma Annex', 'Prof. Kishor Kumar');
 
 INSERT INTO Rooms (block_id, room_number, room_type) VALUES 
 (1, '101', 'Single'), (1, '102', 'Double'), (1, '103', 'Triple'), (1, '201', 'Single'), (1, '202', 'Double'),
 (2, '101', 'Single'), (2, '102', 'Double'), (2, '103', 'Triple'), (2, '201', 'Single'), (2, '202', 'Double');
 
 INSERT INTO Students (usn, name, email) VALUES 
-('4XX24CS001', 'Prathamesh Shenoy', 'prathamesh@example.com'),
-('4XX24CS002', 'Nihal A', 'nihal@example.com'),
-('4XX24CS003', 'Preetham S', 'preetham@example.com'),
-('4XX24CS004', 'Vikas K', 'vikas@example.com'),
-('4XX24CS005', 'Chiranth R', 'chiranth@example.com'),
-('4XX24CS006', 'Aditi Rao', 'aditi@example.com'),
-('4XX24CS007', 'Rahul Nair', 'rahul@example.com'),
-('4XX24CS008', 'Sneha Patil', 'sneha@example.com'),
-('4XX24CS009', 'Amit Verma', 'amit@example.com'),
-('4XX24CS010', 'Priya Das', 'priya@example.com');
+('4XX24CS001', 'Shravan kumar', 'prathamesh@example.com'),
+('4XX24CS002', 'Vivek Bhandary', 'nihal@example.com'),
+('4XX24CS003', 'Pradeep Kamath', 'preetham@example.com'),
+('4XX24CS004', 'Pavan Pawaskar', 'vikas@example.com'),
+('4XX24CS005', 'Darshan A', 'chiranth@example.com'),
 
 INSERT INTO Student_Contacts (student_id, contact_type, phone_number) VALUES 
 (1, 'Personal', '9876543210'), (1, 'Parent', '9123456789'),
@@ -227,7 +189,7 @@ INSERT INTO Amenities (amenity_name, monthly_fee) VALUES
 ('High-Speed WiFi', 500.00), ('Attached Bathroom', 1000.00), ('Air Conditioning', 2000.00), ('Laundry', 300.00), ('Study Table', 0.00);
 
 INSERT INTO Room_Amenities (room_id, amenity_id) VALUES 
-(1, 1), (1, 2), (2, 1), (3, 4), (4, 1), (5, 3), (6, 1), (7, 2), (8, 5), (9, 1);
+(1, 1), (1, 2), (2, 1), (3, 4);
 
 SELECT s.name, b.block_name, r.room_number, r.room_type
 FROM Students s
