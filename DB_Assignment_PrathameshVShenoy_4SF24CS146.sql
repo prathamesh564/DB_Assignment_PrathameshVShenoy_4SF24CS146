@@ -102,6 +102,10 @@ FROM Categories c
 LEFT JOIN Products p ON c.category_id = p.category_id
 GROUP BY c.category_name;
 
+SELECT order_id,
+       SUM(quantity * unit_price) AS total_amount
+FROM Order_Items
+GROUP BY order_id;
 
 //College Campus Hostel Booking
 CREATE TABLE Blocks (
