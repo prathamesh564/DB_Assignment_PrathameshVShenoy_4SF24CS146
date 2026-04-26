@@ -206,3 +206,19 @@ FROM Blocks b
 JOIN Rooms r ON b.block_id = r.block_id
 JOIN Allocations a ON r.room_id = a.room_id
 GROUP BY b.block_name;
+
+SELECT r.room_number,
+       SUM(am.monthly_fee) AS total_amenity_cost
+FROM Rooms r
+JOIN Room_Amenities ra ON r.room_id = ra.room_id
+JOIN Amenities am ON ra.amenity_id = am.amenity_id
+GROUP BY r.room_number;
+
+SELECT SUM(am.monthly_fee) AS total_revenue
+FROM Room_Amenities ra
+JOIN Amenities am ON ra.amenity_id = am.amenity_id;
+
+SELECT academic_year,
+       COUNT(student_id) AS total_students
+FROM Allocations
+GROUP BY academic_year;
