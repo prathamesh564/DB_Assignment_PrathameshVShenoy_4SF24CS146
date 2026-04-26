@@ -107,6 +107,19 @@ SELECT order_id,
 FROM Order_Items
 GROUP BY order_id;
 
+SELECT p.name,
+       SUM(oi.quantity) AS total_sold
+FROM Products p
+JOIN Order_Items oi ON p.product_id = oi.product_id
+GROUP BY p.name
+ORDER BY total_sold DESC;
+
+SELECT o.status,
+       SUM(oi.quantity * oi.unit_price) AS total_revenue
+FROM Orders o
+JOIN Order_Items oi ON o.order_id = oi.order_id
+GROUP BY o.status;
+
 //College Campus Hostel Booking
 CREATE TABLE Blocks (
     block_id INTEGER PRIMARY KEY AUTOINCREMENT,
